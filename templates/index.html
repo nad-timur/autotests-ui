@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .h2-text-class {
+            color: blue;
+        }
+        .h4-text-class {
+            font-size: 28px;
+            color: red;
+        }
+        h3 {
+            font-size: 32px;
+        }
+        #h1-text-id {
+            font-size: 40px;
+            color: orange;
+        }
+        #h6-text-class {
+            font-size: 16px;
+            color: purple;
+        }
+        div.python > a {
+            font-size: 14px;
+            color: green;
+        }
+        ul li {
+            color: brown;
+        }
+        input[type="text"] {
+            background-color: lightblue;
+            border: 2px solid black;
+        }
+        input[type="text"]:hover {
+            background-color: green;
+        }
+        a:hover {
+            text-decoration: underline;
+            color: red;
+        }
+        li::marker {
+            color: red;
+        }
+        ul > li:nth-child(2) {
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+<div class ="python">
+    <h1 id="h1-text-id">H1 Header text</h1>
+    <h1>H1 Header text</h1>
+    <h2 class="h2-text-class">H2 Header text</h2>
+    <h3 class="h2-text-class">H3 Header text</h3>
+    <h3 class="h2-text-class">H3 Header text doubled</h3>
+    <h4 class="h4-text-class">H4 Header text</h4>
+    <h6 id="h6-text-class">H6 Header text</h6>
+    <p>Paragraph text Auto-wait. <span style="color: red">Playwright</span> waits for elements to be actionable prior to performing actions. It also has a rich set of introspection events.
+    </p>
+    <a href="https://playwright.dev/" target="_blank">Python</a>
+    <img src="https://playwright.dev/img/logos/accessibilityinsights.png" style="100px; height: 100px;" alt="Playwright Logo">
+    <ul>
+        <li>List item 1</li>
+        <li>List item 2</li>
+        <li>List item 3</li>
+    </ul>
+    <ol>
+        <li>Ordered item 1</li>
+        <li>Ordered item 2</li>
+    </ol>
+    <form action="/action" method="POST">
+    <label>
+        <input type="text" value="12345" placeholder="Placeholder text">
+        <input required type="email" placeholder="Email">
+        <input type="password" placeholder="Password">
+        <textarea required placeholder="Textarea placeholder">Placeholder</textarea>
+        <button type="submit" disabled>ButtonTextLabel</button>
+    </label>
+    </form>
+    <table>
+        <thead>
+            <tr>
+                <th>Header 1</th>
+                <td>Header 2</td>
+                <th>Header 3</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Row 1 Col 1</td>
+                <td>Row 1 Col 2</td>
+                <td>Row 1 Col 3</td>
+            </tr>
+            <tr>
+                <td>Row 2 Col 1</td>
+                <td>Row 2 Col 2</td>
+                <td>Row 2 Col 3</td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="nested-div">
+        <p>1</p>
+        <p>2</p>
+        <h6>3</h6>
+        <h5>4</h5>
+        <p>5</p>
+    </div>
+</div>
+<div class="java-script">
+    <h2 class="h2-text-class">JavaScript Section H2 Header text</h2>
+    <a href="https://playwright.dev/" target="_blank">JavaScript</a>
+    <ul>
+        <li>List item 1</li>
+        <li>List item 2</li>
+        <li>List item 3</li>
+    </ul>
+</div>
+</body>
+</html>
