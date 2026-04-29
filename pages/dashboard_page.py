@@ -10,4 +10,5 @@ class DashboardPage(BasePage):
 
     def check_visible_dashboard_title(self):
         expect(self.dashboard_title).to_be_visible()
+        expect(self.dashboard_title).to_have_text("Dashboard")
 
