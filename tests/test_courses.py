@@ -3,56 +3,24 @@ import pytest
 
 @pytest.mark.regression  # Добавили маркировку regression
 @pytest.mark.courses  # Добавили маркировку courses
-def test_empty_courses_list():
-    with sync_playwright() as playwright:
-        # Запускаем Chromium браузер в обычном режиме (не headless)
-        browser = playwright.chromium.launch(headless=False)
-        # Создаем новый контекст браузера (новая сессия, которая изолирована от других)
-        context = browser.new_context()
-        # Открываем новую страницу в рамках контекста
-        page = context.new_page()
+def test_empty_courses_list(chromium_page_with_state):
+    chromium_page_with_state.goto("https://nikita-filonov.github.io/qa-automation-engineer-ui-course/#/courses")
 
-        page.goto("https://nikita-filonov.github.io/qa-automation-engineer-ui-course/#/auth/registration")
+    # Проверяем, что отображается заголовок "Courses"
+    courses = chromium_page_with_state.get_by_test_id('courses-list-toolbar-title-text')
+    expect(courses).to_be_visible()
+    expect(courses).to_have_text("Courses")
 
-        email_input = page.get_by_test_id('registration-form-email-input').locator('input')
-        email_input.fill('user.name@gmail.com')
+    # Проверить наличие и текст блока "There is no results"
+    results = chromium_page_with_state.get_by_test_id('courses-list-empty-view-title-text')
+    expect(results).to_be_visible()
+    expect(results).to_have_text("There is no results")
 
-        username_input = page.get_by_test_id('registration-form-username-input').locator('input')
-        username_input.fill('username')
+    # Проверить наличие и видимость иконки пустого блока
+    icon = chromium_page_with_state.get_by_test_id('courses-list-empty-view-icon')
+    expect(icon).to_be_visible()
 
-        password_input = page.get_by_test_id('registration-form-password-input').locator('input')
-        password_input.fill('password')
-
-        registration_button = page.get_by_test_id('registration-page-registration-button')
-        registration_button.click()
-
-        # Сохраняем состояние браузера (куки и localStorage) в файл для дальнейшего использования
-        context.storage_state(path="browser-state.json")
-
-        # Создать новую сессию браузера.
-    with sync_playwright() as playwright:
-        browser = playwright.chromium.launch(headless=False)
-        context = browser.new_context(storage_state="browser-state.json")  # Указываем файл с сохраненным состоянием
-        page = context.new_page()
-
-        # Открыть страницу "Courses"
-        page.goto("https://nikita-filonov.github.io/qa-automation-engineer-ui-course/#/courses")
-
-        # Проверяем, что отображается заголовок "Courses"
-        courses = page.get_by_test_id('courses-list-toolbar-title-text')
-        expect(courses).to_be_visible()
-        expect(courses).to_have_text("Courses")
-
-        # Проверить наличие и текст блока "There is no results"
-        results = page.get_by_test_id('courses-list-empty-view-title-text')
-        expect(results).to_be_visible()
-        expect(results).to_have_text("There is no results")
-
-        # Проверить наличие и видимость иконки пустого блока
-        icon = page.get_by_test_id('courses-list-empty-view-icon')
-        expect(icon).to_be_visible()
-
-        # Проверить наличие и текст описания блока: "Results from the load test pipeline will be displayed here"
-        text = page.get_by_test_id('courses-list-empty-view-description-text')
-        expect(text).to_be_visible()
-        expect(text).to_have_text("Results from the load test pipeline will be displayed here")
+    # Проверить наличие и текст описания блока: "Results from the load test pipeline will be displayed here"
+    text = chromium_page_with_state.get_by_test_id('courses-list-empty-view-description-text')
+    expect(text).to_be_visible()
+    expect(text).to_have_text("Results from the load test pipeline will be displayed here")
