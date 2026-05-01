@@ -11,13 +11,13 @@ class RegistrationFormComponent(BaseComponent):
         self.password_input = Input(page, 'registration-form-password-input', 'Password')
         self.user_input = Input(page, 'registration-form-username-input', 'User')
 
-    def fill(self, email: str, user: str, password: str):
+    def fill(self, email: str, username: str, password: str):
         self.email_input.fill(email)
-        self.user_input.fill(user)
+        self.user_input.fill(username)
         self.password_input.fill(password)
 
-    def check_visible(self, email: str, user: str, password: str):
+    def check_visible(self, email: str, username: str, password: str):
         self.email_input.check_have_value(email)
-        self.user_input.check_have_value(user)
+        self.user_input.check_have_value(username)
         self.password_input.check_have_value(password)
 

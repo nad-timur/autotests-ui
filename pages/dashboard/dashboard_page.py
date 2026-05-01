@@ -18,5 +18,5 @@ class DashboardPage(BasePage):
         self.courses_chart_view = ChartViewComponent(page, "courses", "pie")
         self.students_chart_view = ChartViewComponent(page, "students", "bar")
         self.activities_chart_view = ChartViewComponent(page, "activities", "line")
-        self.dashboard_view = DashboardToolbarViewComponent(page)
+        self.dashboard_toolbar_view = DashboardToolbarViewComponent(page)
 
