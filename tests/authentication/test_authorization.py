@@ -23,6 +23,7 @@ from tools.routes import AppRoute
 @allure.suite(AllureFeature.AUTHENTICATION)
 @allure.sub_suite(AllureStory.AUTHORIZATION)
 class TestAuthorization:
+    @pytest.mark.xdist_group(name="authorization-group")
     @pytest.mark.parametrize(
         "email, password",
         [
@@ -41,6 +42,7 @@ class TestAuthorization:
         login_page.check_visible_wrong_email_or_password_alert()
 
     @allure.tag(AllureTag.NAVIGATION)
+    @pytest.mark.xdist_group(name="authorization-group")
     @allure.title("Navigation from login page to registration page")
     @allure.severity(Severity.BLOCKER)
     def test_successful_authorization(
