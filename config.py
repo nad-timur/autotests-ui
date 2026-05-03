@@ -42,6 +42,7 @@ class Settings(BaseSettings):
     tracing_dir: DirectoryPath
     allure_results_dir: DirectoryPath
     browser_state_file: FilePath
+    ui_coverage_apps: str
 
     def get_base_url(self) -> str:
         return f"{self.app_url}/"
