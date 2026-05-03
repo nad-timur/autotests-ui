@@ -40,7 +40,7 @@ class Settings(BaseSettings):
     test_data: TestData
     videos_dir: DirectoryPath
     tracing_dir: DirectoryPath
-    allure_results_dir: DirectoryPath  # Добавили новое поле
+    allure_results_dir: DirectoryPath
     browser_state_file: FilePath
 
     def get_base_url(self) -> str:
